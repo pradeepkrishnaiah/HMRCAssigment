@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="175088b3-5a34-4ea2-8f7a-7b8c9243563a" activeEnvironment="Default" name="HMRC-asssignment" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="25030919-9f55-4405-931c-0c12b4fe11f7" wsaVersion="NONE" name="CalculatorSoap11Binding" type="wsdl" bindingName="{http://c.b.a}CalculatorSoap11Binding" soapVersion="1_1" anonymous="optional" definition="https://svn.apache.org/repos/asf/airavata/sandbox/xbaya-web/test/Calculator.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap11Endpoint/</con:endpoint><con:endpoint>https://156.56.179.164:9443/services/Calculator.CalculatorHttpsSoap11Endpoint/</con:endpoint></con:endpoints><con:operation id="eedf9f9a-acb0-4dd9-a71a-fed0bb5e0ac1" isOneWay="false" action="urn:add" name="add" bindingOperationName="add" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bd7300df-0fed-485f-8017-4d1c2add0d7a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:c="http://c.b.a">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <c:add>\r
+         <!--Optional:-->\r
+         <c:n1>1</c:n1>\r
+         <!--Optional:-->\r
+         <c:n2>3/c:n2>\r
+      </c:add>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:add"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="b187e26b-401d-4ce8-bf23-4e93443f5042" wsaVersion="NONE" name="CalculatorSoap12Binding" type="wsdl" bindingName="{http://c.b.a}CalculatorSoap12Binding" soapVersion="1_2" anonymous="optional" definition="https://svn.apache.org/repos/asf/airavata/sandbox/xbaya-web/test/Calculator.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://svn.apache.org/repos/asf/airavata/sandbox/xbaya-web/test/Calculator.wsdl"><con:part><con:url>https://svn.apache.org/repos/asf/airavata/sandbox/xbaya-web/test/Calculator.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://c.b.a" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://c.b.a" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>Calculator</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://c.b.a">
+      <xs:element name="add">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="n1" type="xs:int"/>
+            <xs:element minOccurs="0" name="n2" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addRequest">
+    <wsdl:part name="parameters" element="ns:add"/>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="parameters" element="ns:addResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CalculatorPortType">
+    <wsdl:operation name="add">
+      <wsdl:input message="ns:addRequest" wsaw:Action="urn:add"/>
+      <wsdl:output message="ns:addResponse" wsaw:Action="urn:addResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorSoap11Binding" type="ns:CalculatorPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="add">
+      <soap:operation soapAction="urn:add" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalculatorSoap12Binding" type="ns:CalculatorPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="add">
+      <soap12:operation soapAction="urn:add" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalculatorHttpBinding" type="ns:CalculatorPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="add">
+      <http:operation location="add"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Calculator">
+    <wsdl:port name="CalculatorHttpsSoap11Endpoint" binding="ns:CalculatorSoap11Binding">
+      <soap:address location="https://156.56.179.164:9443/services/Calculator.CalculatorHttpsSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CalculatorHttpSoap11Endpoint" binding="ns:CalculatorSoap11Binding">
+      <soap:address location="http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CalculatorHttpSoap12Endpoint" binding="ns:CalculatorSoap12Binding">
+      <soap12:address location="http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CalculatorHttpsSoap12Endpoint" binding="ns:CalculatorSoap12Binding">
+      <soap12:address location="https://156.56.179.164:9443/services/Calculator.CalculatorHttpsSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CalculatorHttpsEndpoint" binding="ns:CalculatorHttpBinding">
+      <http:address location="https://156.56.179.164:9443/services/Calculator.CalculatorHttpsEndpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CalculatorHttpEndpoint" binding="ns:CalculatorHttpBinding">
+      <http:address location="http://156.56.179.164:9763/services/Calculator.CalculatorHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap12Endpoint/</con:endpoint><con:endpoint>https://156.56.179.164:9443/services/Calculator.CalculatorHttpsSoap12Endpoint/</con:endpoint></con:endpoints><con:operation id="3cf752bf-46c0-43bf-a7cb-7db40ab7ddb4" isOneWay="false" action="urn:add" name="add" bindingOperationName="add" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3fada9a5-c52a-4f4e-b2a7-43f9c4e40cdd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:c="http://c.b.a">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <c:add>\r
+         <!--Optional:-->\r
+         <c:n1>?</c:n1>\r
+         <!--Optional:-->\r
+         <c:n2>?</c:n2>\r
+      </c:add>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:add"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="e72ad9d5-08df-4f49-9c6a-ba538e98fae8" name="CalculatorSoap11Binding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b6c33b22-3b6c-41fb-8885-ba0260a39762" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="add TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="235b3ee7-8598-4e6a-992e-5654e428b684" name="add"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CalculatorSoap11Binding</con:interface><con:operation>add</con:operation><con:request name="add" id="71763d35-4be5-4a94-b649-2090b7b12a1b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:c="http://c.b.a">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <c:add>\r
+         <!--Optional:-->\r
+         <c:n1>1</c:n1>\r
+         <!--Optional:-->\r
+         <c:n2>2</c:n2>\r
+      </c:add>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="urn:add" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="SOAP Request" id="d55f39fb-3383-4c31-be6b-b5719d4a6ec4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CalculatorSoap11Binding</con:interface><con:operation>add</con:operation><con:request name="SOAP Request" id="3f465e6e-d9dd-4964-a9da-3db608ddf54b"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:c="http://c.b.a">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <c:add/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b3332233-aec8-4f24-9a2f-364d189bd76b"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="SOAP Request 1" id="5f812746-a6f1-4ed1-9d4f-cd98166d8b29"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CalculatorSoap12Binding</con:interface><con:operation>add</con:operation><con:request name="SOAP Request 1" id="dd9a020c-4a13-492d-b0bc-54c8a0afd406"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://dlwlsrim01.wil.csc.local:7100/GatewayImpl/GatewayService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:c="http://c.b.a">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <c:add>\r
+         <!--Optional:-->\r
+         <c:n1>?</c:n1>\r
+         <!--Optional:-->\r
+         <c:n2>?</c:n2>\r
+      </c:add>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="734096ab-e4fa-45ac-8d81-16517d1cf406"/><con:assertion type="Schema Compliance" id="c316e2f5-2ec8-4014-82cd-deea4b808d49"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="c597b46c-4711-413d-9ab0-2e0c2e9afe06"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="properties" name="Properties" id="72b40c2e-f7ba-4334-a3e9-43d48859205e"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>DomainName</con:name><con:value>cscdbstest-groovytetigj-05</con:value></con:property><con:property><con:name>TLD</con:name><con:value>ws</con:value></con:property><con:property><con:name>EndPointURL</con:name><con:value>http://dlwlsrim01.wil.csc.local:7100/GatewayImpl/GatewayService</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script" id="cdb59ce6-306c-417b-a789-f2d59b05bfbc"><con:settings/><con:config><script><![CDATA[import jxl.*
+import jxl.write.*
+import java.io.File;
+import com.eviware.soapui.support.*;
+import java.util.*;
+import java.lang.*;
+import jxl.read.biff.BiffException;
+Workbook wk;
+WritableWorkbook workbookCopy;
+def fr;
+try
+{
+fr = new File("C:\\SOAP Projects CSC\\My Own Projects\\Check Domain Groovy\\CheckDomainTestData1.xls")
+wk = Workbook.getWorkbook(fr);
+def s1 = wk.getSheet(0);
+workbookCopy = Workbook.createWorkbook(fr, wk);
+WritableSheet sheetToEdit = workbookCopy.getSheet(0);
+def r = s1.getRows();
+// -------------------------------------------------------------
+// Defining object “fr” for Excel workbook
+// Assigning Workbook Object to “wk”
+// Getting Sheet1 into variable “s1”
+// Creating and Assigning workbook to “WorkbookCopy”
+// Defining writable sheet and getting Sheet1 to “sheetToEdit”
+// Getting row count to “r”
+// -------------------------------------------------------------
+for(def i=1;i&amp;lt;r;i++)
+{
+def c1 = s1.getCell(0, i)
+def c2 = s1.getCell(1, i)
+// -------------------------------------------------------------
+// Iterating through Excel rows
+// Assigning cell “A2” to “c1”
+// Assigning cell “A3” to “c2”
+// -------------------------------------------------------------
+testRunner.testCase.testSteps[&quot;GroovyProperties&quot;].setPropertyValue(&quot;DomainName&quot;,c1.getContents())
+testRunner.testCase.testSteps[&quot;GroovyProperties&quot;].setPropertyValue(&quot;TLD&quot;,c2.getContents())
+// -------------------------------------------------------------
+// Using testRunner object we are assigning content in cell “A2” to property “DomainName” and cell “A3” to Property “TLD”
+// -------------------------------------------------------------
+testRunner.runTestStepByName(&quot;CheckDomainCommand&quot;)
+def EndPointURL = testRunner.testCase.testSteps[&quot;GroovyProperties&quot;].getPropertyValue(&quot;EndPointURL&quot;)
+// -------------------------------------------------------------
+// Using “testRunner.run” we are executing the actual command
+// “EndPointURL” defines in which environment the test need to execute
+// -------------------------------------------------------------
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
+// -------------------------------------------------------------
+// Defining “groovyUtils” to access the utility methods of GroovyUtils class
+// -------------------------------------------------------------
+def holder = groovyUtils.getXmlHolder(&quot;CheckDomainCommand#Response&quot;)
+// -------------------------------------------------------------
+// Defining “holder” to capture the XML response
+// -------------------------------------------------------------
+soapReturn = holder.getNodeValue( &quot;//soapExecuteReturn&quot; )
+soapResponse = groovyUtils.getXmlHolder(soapReturn)
+responseStatus = soapResponse.getNodeValue(&quot;//ResponseStatus&quot;)
+// -------------------------------------------------------------
+// Capturing SOAP response to “soapResponse” and “Status” to “responseStatus”
+// -------------------------------------------------------------
+if (&quot;FAILURE&quot;.equalsIgnoreCase(responseStatus))
+{
+log.info(&quot;Check Dmoain Status ////////////////: &quot; + responseStatus)
+ErrorResponse = soapResponse.getNodeValue(&quot;//ErrorMsg&quot;)
+log.info(&quot;Check Dmoain Status ////////////////: &quot; + ErrorResponse)
+Label label1 = new Label(2, i, responseStatus.toString());
+cell1 = (WritableCell) label1;
+sheetToEdit.addCell(cell1);
+Label label3 = new Label(4, i, EndPointURL.toString());
+cell3 = (WritableCell) label3;
+sheetToEdit.addCell(cell3);
+Label label4 = new Label(5, i, ErrorResponse.toString());
+cell4 = (WritableCell) label4;
+sheetToEdit.addCell(cell4);
+}
+else
+{
+isAvailable = soapResponse.getNodeValue(&quot;//IsAvail&quot;)
+log.info(&quot;Check Dmoain IsAvail ////////////////: &quot; + isAvailable)
+Label label1 = new Label(2, i, responseStatus.toString());
+cell1 = (WritableCell) label1;
+sheetToEdit.addCell(cell1);
+Label label2 = new Label(3, i, isAvailable.toString());
+cell2 = (WritableCell) label2;
+sheetToEdit.addCell(cell2);
+Label label3 = new Label(4, i, EndPointURL.toString());
+cell3 = (WritableCell) label3;
+sheetToEdit.addCell(cell3);
+}
+// -------------------------------------------------------------
+// Based on the response status “FAILURE” or “SUCCESS” writing error message to log file using “log.info”
+// Defining label and capturing the required response field from complete response
+// Assigning the captured label value to a cell
+// Finally writing it on sheet which is editable
+// -------------------------------------------------------------
+}
+workbookCopy.write();
+}
+catch (Exception e)
+// -------------------------------------------------------------
+// Catching exception and writing it to error log
+// -------------------------------------------------------------
+{
+log.error(e)
+}
+finally
+{
+if(workbookCopy != null)
+{
+workbookCopy.close();
+}
+if(wk != null)
+{
+wk.close();
+}
+}
+log.info(&quot;Testing Completed&quot;)]]></script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="6ce9f384-bcc7-4fe3-a92e-739bb1a99bae" name="CalculatorSoap12Binding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a09c7931-7da4-4963-95ca-3e1a1794993f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="add TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="81c972c2-1700-48e9-a7d7-d271b102d9c3" name="add"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CalculatorSoap12Binding</con:interface><con:operation>add</con:operation><con:request name="add" id="789eaefe-fa6f-4e85-95a5-33c65fe631c6"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://156.56.179.164:9763/services/Calculator.CalculatorHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:c="http://c.b.a">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <c:add>\r
+         <!--Optional:-->\r
+         <c:n1>?</c:n1>\r
+         <!--Optional:-->\r
+         <c:n2>?</c:n2>\r
+      </c:add>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="urn:add"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
